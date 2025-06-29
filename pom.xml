@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>demo-github-thomasd</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>demo-github-thomasd</name>
 	<description>Demo project for Spring Boot ThomasD</description>
 	<url/>
@@ -56,4 +56,10 @@
 		</plugins>
 	</build>
 
+	<distributionManagement>
+    		<repository>
+        		<id>nexus-appspring</id>
+        		<url>http://127.0.0.1:8081/repository/AppSpring/</url>
+    		</repository>
+	</distributionManagement>
 </project>
