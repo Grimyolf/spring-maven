@@ -25,6 +25,4 @@ jobs:
         run: mvn clean install
 
       - name: Analyse SonarQube
-        run: mvn sonar:sonar  -Dsonar.projectKey=AppSpringBoot \
-                              -Dsonar.host.url=http://192.168.138.132:9000 \
-                              -Dsonar.login=${{ secrets.SONAR_SECRET }}
+        run: mvn sonar:sonar -Dsonar.projectKey=AppSpringBoot -Dsonar.host.url=http://192.168.138.132:9000 -Dsonar.login=${{ secrets.SONAR_SECRET }}
