@@ -1,8 +1,8 @@
 pipeline {
     	agent any
     	tools {
-       		maven 'localMaven'
-        	jdk "Java17"
+       		maven 'localmaven'
+        	jdk "java17"
     	}
     	environment {
         	PROJECT_VERSION = '0.0.1'
