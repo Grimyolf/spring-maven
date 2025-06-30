@@ -91,7 +91,14 @@ pipeline {
         			}
     			}
 		}
+		stage('Scan Docker Image with Trivy') {
+    			steps {
+        			script {
+            				sh 'trivy image grimyolf/demo-github-thomasd:9'
+        			}
+    			}
+		}
 
-    }
+    	}
 
 }
