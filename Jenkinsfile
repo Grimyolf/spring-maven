@@ -75,6 +75,22 @@ pipeline {
                 		}
             		}
         	}
+        	stage('Deploy Docker Container') {
+    			steps {
+        			script {
+				    sh '''
+					echo ">>> Nettoyage de l'ancien container (s'il existe)"
+					docker stop app-thomasd-secops || true
+					docker rm app-thomasd-secops || true
+
+					echo ">>> Lancement du nouveau container"
+					docker run -d --name app-thomasd-secops -p 8037:8080 grimyolf/demo-github-thomasd:9
+
+					echo ">>> Déploiement terminé, application disponible sur le port 8037"
+				    '''
+        			}
+    			}
+		}
 
     }
 
