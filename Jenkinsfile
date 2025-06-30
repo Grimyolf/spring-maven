@@ -8,6 +8,8 @@ pipeline {
         	PROJECT_VERSION = '0.0.1'
         	ARTIFACT_ID = 'demo-github-thomasd'
         	GROUP_ID = 'com.example'
+        	DOCKER_IMAGE = 'grimyolf/demo-github-thomasd'
+        	DOCKERHUB_CREDENTIALS = 'dockerhub'
     	}
     	stages {
 		stage('Checkout') {
@@ -54,6 +56,23 @@ pipeline {
 		                ]
 		            )
                 	}
+            		}
+        	}
+        	stage('Build Docker Image') {
+            		steps {
+                		script {
+                    			sh "docker build -t $DOCKER_IMAGE:${BUILD_NUMBER} ."
+                		}
+            		}
+        	}
+
+        	stage('Push Docker Image') {
+            		steps {
+                		script {
+                    			docker.withRegistry('https://index.docker.io/v1/', DOCKERHUB_CREDENTIALS) {
+                        		sh "docker push $DOCKER_IMAGE:${BUILD_NUMBER}"
+                    			}
+                		}
             		}
         	}
 
