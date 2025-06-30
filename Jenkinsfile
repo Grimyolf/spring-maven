@@ -37,11 +37,10 @@ pipeline {
 		stage('Deploy to Nexus') {
 		    steps {
 		        script {
-		            // Deploy the WAR file to Nexus Repository
 		            nexusArtifactUploader(
 		                nexusVersion: 'nexus3',
 		                protocol: 'http',
-		                serverId: '192.168.138.132:8081/',
+		                serverId: 'nexus',
 		                groupId: "${GROUP_ID}",
 		                version: "${PROJECT_VERSION}",
 		                repository: 'AppSpring',
